@@ -31,29 +31,53 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from "vue";
+import {defineComponent, reactive, ref, toRefs} from "vue";
+import {LoginData} from "@/types";
+import { FormInstance } from "element-plus";
+import {login} from "../api/user";
 
 export default defineComponent({
 
     name: "Login",
     setup(){
       const data=reactive({
-        ruleForm:{
-          username:"",
-          password:""
-        },
-        rules:{
+        ruleForm: {
+          username: "",
+          password: ""
+        } as LoginData,
+      });
+        const rules={
           username: [
             { required: true, message: '', trigger: 'blur' },
-            { min: 3, max: 5, message: 'Length should be 3 to 10', trigger: 'blur' },
+            { min: 3, max: 10, message: 'Length should be 3 to 10', trigger: 'blur' },
           ],
           password: [
             { required: true, message: '', trigger: 'blur' },
-            { min: 3, max: 5, message: 'Length should be 3 to 10', trigger: 'blur' },
+            { min: 3, max: 10, message: 'Length should be 3 to 10', trigger: 'blur' },
           ],
-        }
-      });
-      return {...toRefs(data)};
+        };
+
+      const ruleFormRef=ref<FormInstance>();
+      //重置账号密码
+      const submitForm = async (formEl: FormInstance | undefined) => {
+        if (!formEl) return
+        await formEl.validate((valid, fields) => {
+          if (valid) {
+            // console.log('submit!')
+            login(data.ruleForm).then((res)=>{
+              console.log(res);
+            })
+          } else {
+            console.log('error submit!', fields)
+          }
+        })
+      };
+        const resetForm = () => {
+             data.ruleForm.username=""
+             data.ruleForm.password=""
+        };
+
+      return {...toRefs(data),rules,resetForm,ruleFormRef,submitForm};
   }
 })
 

@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const service = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "http://localhost:8088",
     timeout: 10000,
     // 请求头
     headers: {
@@ -33,5 +33,5 @@ service.interceptors.response.use((res)=> {
 }, (err) =>{
         console.log(err);
 })
-
+export default service;
 
