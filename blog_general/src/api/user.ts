@@ -8,6 +8,5 @@ export  function  login(data:LoginData){
         method:"post",
         data
     })
-
-
 }
+

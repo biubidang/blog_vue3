@@ -34,7 +34,8 @@
 import {defineComponent, reactive, ref, toRefs} from "vue";
 import {LoginData} from "@/types";
 import { FormInstance } from "element-plus";
-import {login} from "../api/user";
+import {login} from "@/api/user";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
 
@@ -58,6 +59,7 @@ export default defineComponent({
         };
 
       const ruleFormRef=ref<FormInstance>();
+      const router=useRouter();
       //重置账号密码
       const submitForm = async (formEl: FormInstance | undefined) => {
         if (!formEl) return
@@ -66,6 +68,8 @@ export default defineComponent({
             // console.log('submit!')
             login(data.ruleForm).then((res)=>{
               console.log(res);
+            localStorage.setItem("token",res.data.token);
+            router.push('/');
             })
           } else {
             console.log('error submit!', fields)
