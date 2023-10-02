@@ -15,8 +15,9 @@ const service = axios.create({
 // @ts-ignore
 // 请求拦截
 service.interceptors.request.use((config)=>{
+    const isToken = (config.headers || {}).isToken === false
     config.headers=config.headers||{}
-    if(localStorage.getItem('token')){
+    if(localStorage.getItem('token')&& !isToken){
         config.headers.token=localStorage.getItem('token')||""
     }
     return config
