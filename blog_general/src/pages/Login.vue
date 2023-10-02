@@ -41,6 +41,7 @@ export default defineComponent({
 
     name: "Login",
     setup(){
+      // localStorage.setItem("token","");
       const data=reactive({
         ruleForm: {
           username: "",

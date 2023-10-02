@@ -12,7 +12,7 @@
         <el-menu-item index="1"><router-link to="/">首 页</router-link></el-menu-item>
         <el-sub-menu index="2">
           <template #title>分 类</template>
-<!--          <el-menu-item index="2-1">item one</el-menu-item>-->
+          <el-menu-item v-for="category in categories">{{category.name}}</el-menu-item>
 <!--          <el-menu-item index="2-2">item two</el-menu-item>-->
 <!--          <el-menu-item index="2-3">item three</el-menu-item>-->
 <!--          <el-sub-menu index="2-4">-->
@@ -32,24 +32,36 @@
 </template>
 
 <script lang="ts">
+import { categoryList } from "@/api/category";
 import {defineComponent, ref} from "vue";
+
 
 export default defineComponent({
   name: "Header",
   setup() {
-    const activeIndex = ref('1')
+
+    let categories=ref(null);
     const handleSelect = (key: string, keyPath: string[]) => {
       console.log(key, keyPath)
     }
+    categoryList().then((res)=> {
+      console.log(res);
+      categories.value=res.data;
+    })
+
+return {categories};
   }
 })
 </script>
 
 <style lang="scss" scoped>
 .header{
-  height: 90px;
+  height: 80px;
   .logo{
-    height: 90px;
+    height: 80px;
+  }
+  .blog-menu{
+    height: 80px;
   }
 }
 
