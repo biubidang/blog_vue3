@@ -5,7 +5,7 @@
 <script>
 import Header from "@/components/myHeader";
 export default {
-  name: "ArticleDetail",
+  name: "DetailArticle",
   components: {Header}
 }
 </script>
