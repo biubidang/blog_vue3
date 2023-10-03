@@ -1,9 +1,9 @@
 import {ArticleListData} from "@/types";
 import service from "@/utils/request";
 
-export function hotArticleList(query:ArticleListData){
+export function articleList(query:ArticleListData){
     return service({
-        url:"/article/hotArticleList",
+        url:"/article/articleList",
         method:"get",
         headers:{
             isToken:false
@@ -11,9 +11,9 @@ export function hotArticleList(query:ArticleListData){
         params:query
     })
 }
-export function articleList(){
+export function hotArticleList(){
     return service({
-        url:"/article/articleList",
+        url:"/article/hotArticleList",
         method:"get",
         headers:{
             isToken:false
