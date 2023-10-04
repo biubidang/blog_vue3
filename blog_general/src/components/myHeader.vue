@@ -12,7 +12,7 @@
         <el-menu-item index="1"><router-link to="/">首 页</router-link></el-menu-item>
         <el-sub-menu index="2">
           <template #title>分 类</template>
-          <el-menu-item v-for="category in categories" @click="getCategoryArticles(category.id)">{{category.name}}</el-menu-item>
+          <el-menu-item index="2-1" v-for="category in categories" @click="getCategoryArticles(category.id)">{{category.name}}</el-menu-item>
 <!--          <el-menu-item index="2-2">item two</el-menu-item>-->
 <!--          <el-menu-item index="2-3">item three</el-menu-item>-->
 <!--          <el-sub-menu index="2-4">-->
@@ -34,6 +34,7 @@
 <script lang="ts">
 import { categoryList } from "@/api/category";
 import router from "@/router";
+import $bus from "@/utils/mitt";
 import {defineComponent, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 
@@ -44,22 +45,23 @@ export default defineComponent({
   setup() {
     const router=useRouter();
     let categories=ref(null);
-    const handleSelect = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath)
+    // const handleSelect = (key: string, keyPath: string[]) => {
+    //   console.log(key, keyPath)
+    // }
+
+    function getCategoryArticles(index:number){
+      $bus.emit("articleListCategory",index)
+      router.push('/articleList');
     }
     onMounted(()=>{
       categoryList().then((res)=> {
         console.log(res);
         categories.value=res.data;
       })
-    })
-    const msg = function getCategoryArticles(index:number){
-      const msg=index;
-      router.push('/articleList');
 
-      return msg;
-    }
-return {categories,msg};
+    })
+
+return {categories,getCategoryArticles};
   },
 
 
