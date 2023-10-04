@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import VMdPreview from "@kangc/v-md-editor/lib/preview";
 import '@kangc/v-md-editor/lib/style/preview.css';
 // VuePress主题以及样式
-import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
-import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";
+import "@kangc/v-md-editor/lib/theme/style/vuepress.css";
 
 // Prism
 import Prism from 'prismjs';
