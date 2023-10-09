@@ -23,7 +23,7 @@ export default defineComponent({
       hotArticleList().then((res)=>{
         // console.log(res.data);
         data.articles=res.data
-        console.log(data.articles)
+        //console.log(data.articles)
       })
     })
     return{...toRefs(data),}

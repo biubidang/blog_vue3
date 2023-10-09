@@ -22,6 +22,12 @@
         </div>
       </el-collapse-item>
     </el-collapse>
+    <div class="example-pagination-block">
+      <div class="example-demonstration">When you have few pages</div>
+      <el-pagination v-model:current-page="param.pageNum"
+                     :page-size="param.pageSize"
+          layout="prev, pager, next, jumper" :total="total" @current-change="handleCurrentChange"/>
+    </div>
   </div>
 
 </template>
@@ -41,8 +47,21 @@ export default defineComponent({
         pageSize:10,
         categoryId:0
       } as ArticleListData,
-      articles:[]
+      articles:[],
+      total:0
     });
+    const handleCurrentChange=(val:number)=>{
+      // console.log(val)
+      data.param.pageNum=val;
+      articleList(data.param).then((res)=>{
+        // console.log(res.data);
+        data.articles=res.data.rows;
+        data.total=res.data.total;
+        // console.log(data.articles);
+      })
+
+    }
+
     let data_form_category=0;
     //处理Header中的点击具体分类跳转对应类的文章列表事件
     $bus.on("articleListCategory",(val)=>{
@@ -51,22 +70,23 @@ export default defineComponent({
       if(data_form_category>0){
         data.param.categoryId=data_form_category;
       }
-      console.log(data.param);
+      // console.log(data.param);
       articleList(data.param).then((res)=>{
         // console.log(res.data);
         data.articles=res.data.rows;
+        data.total=res.data.total;
         // console.log(data.articles);
-
       })
     })
 
-
-    return {...toRefs(data)};
+    return {...toRefs(data),handleCurrentChange};
   },
 
 })
 </script>
 
 <style scoped>
-
+.example-pagination-block + .example-pagination-block {
+  margin-top: 10px;
+}
 </style>

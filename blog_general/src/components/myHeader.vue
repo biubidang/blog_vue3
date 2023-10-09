@@ -50,8 +50,9 @@ export default defineComponent({
     // }
 
     function getCategoryArticles(index:number){
-      $bus.emit("articleListCategory",index)
       router.push('/articleList');
+      $bus.emit("articleListCategory",index)
+
     }
     onMounted(()=>{
       categoryList().then((res)=> {
