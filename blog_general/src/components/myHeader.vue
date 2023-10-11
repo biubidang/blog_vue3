@@ -48,12 +48,12 @@ export default defineComponent({
     // const handleSelect = (key: string, keyPath: string[]) => {
     //   console.log(key, keyPath)
     // }
-
     function getCategoryArticles(index:number){
-      router.push('/articleList');
-      $bus.emit("articleListCategory",index)
+      router.push('/articleList/'+index);
+
 
     }
+
     onMounted(()=>{
       categoryList().then((res)=> {
         console.log(res);
