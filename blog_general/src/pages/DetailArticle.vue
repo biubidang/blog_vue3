@@ -1,12 +1,16 @@
 <template>
-  <Header></Header>>
+  <Header></Header>
+  <div class="articleDetail">
+    <article-detail></article-detail>
+  </div>
 </template>
 
 <script>
 import Header from "@/components/myHeader";
+import ArticleDetail from "@/components/articleDetail";
 export default {
   name: "DetailArticle",
-  components: {Header}
+  components: {ArticleDetail, Header}
 }
 </script>
 

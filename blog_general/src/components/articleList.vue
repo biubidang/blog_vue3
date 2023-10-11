@@ -3,7 +3,7 @@
   <div class="article-collapse">
     <el-collapse accordion>
         <el-collapse-item v-for="item in articles">
-        <template #title>
+        <template #title >
           {{item.title}}<el-icon class="header-icon">
           <info-filled />
         </el-icon>
@@ -17,7 +17,7 @@
             &#12288;{{item.category}}
           </div>
         </template>
-        <div class="description">
+        <div class="description" @click="getDetailfromCategory(item.id)">
           {{item.discription}}
         </div>
       </el-collapse-item>
@@ -33,10 +33,11 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, ref, toRefs} from "vue";
+import {defineComponent, onUnmounted, reactive, ref, toRefs, watch} from "vue";
 import {ArticleListData} from "@/types";
 import { articleList } from "@/api/article";
 import $bus from "@/utils/mitt";
+import {onBeforeRouteUpdate, useRouter} from "vue-router";
 
 export default defineComponent({
   name: "article-list",
@@ -50,37 +51,48 @@ export default defineComponent({
       articles:[],
       total:0
     });
+
+    const router=useRouter();
+    data.param.categoryId=router.currentRoute.value.params.id as unknown as number
+    // data.param.categoryId=router.currentRoute.value.params.id as unknown as number;
     const handleCurrentChange=(val:number)=>{
       // console.log(val)
       data.param.pageNum=val;
-      articleList(data.param).then((res)=>{
-        // console.log(res.data);
-        data.articles=res.data.rows;
-        data.total=res.data.total;
+      data.param.categoryId=router.currentRoute.value.params.id as unknown as number
+      getArticleList()
         // console.log(data.articles);
-      })
-
+      }
+    function getDetailfromCategory(index:number){
+      router.push("/articleDetail/"+index)
     }
 
-    let data_form_category=0;
+
     //处理Header中的点击具体分类跳转对应类的文章列表事件
-    $bus.on("articleListCategory",(val)=>{
-      console.log(val);
-      data_form_category=val as number;
-      if(data_form_category>0){
-        data.param.categoryId=data_form_category;
-      }
+    getArticleList()
       // console.log(data.param);
+    function getArticleList(){
+      console.log(data.param)
       articleList(data.param).then((res)=>{
         // console.log(res.data);
         data.articles=res.data.rows;
         data.total=res.data.total;
         // console.log(data.articles);
       })
-    })
+    }
+    onBeforeRouteUpdate((to,from,next) => {
+      // console.log('onBeforeRouteUpdate',to.path);
+      if(to.fullPath!=from.fullPath){
+        data.param.categoryId=to.params.id as unknown as number
+        next()
+        getArticleList()
+      }
 
-    return {...toRefs(data),handleCurrentChange};
+    });
+
+
+    return {...toRefs(data),handleCurrentChange,getDetailfromCategory}
   },
+
 
 })
 </script>

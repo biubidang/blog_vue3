@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../pages/UserInfo.vue')
   },
   {
-    path: '/articleList',
+    path: '/articleList/:id',
     name: 'ArticleList',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -49,7 +49,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../pages/ListArticle.vue')
   },
   {
-    path: '/articleDetail',
+    path: '/articleDetail/:id',
     name: 'ArticleDetail',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
