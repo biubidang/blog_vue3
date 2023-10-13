@@ -40,12 +40,13 @@
 
 <script lang="ts">
 import {defineComponent, onBeforeMount, onMounted, onUnmounted, reactive, toRefs} from "vue";
-import {articleDetail} from "@/api/article";
+import {articleDetail, updateViewCounts} from "@/api/article";
 import $bus from "@/utils/mitt";
 import router from "@/router";
 
 export default defineComponent({
   name: "articleDetail",
+
   setup(){
     const data=reactive({
       articleId:1,
@@ -57,26 +58,29 @@ export default defineComponent({
     })
     data.articleId= router.currentRoute.value.params.id as unknown as number
 
-      function getDetail(){
-        articleDetail(data.articleId).then((res)=>{
-          console.log(res.data)
-          console.log(data.articleId)
-          data.articleId=res.data.id
-          data.content=res.data.content;
-          data.title=res.data.title;
-          data.viewcounts=res.data.viewcounts;
-          if(res.data.createtime!=null){
-            data.createtime=res.data.createtime;
-          }
-          if(res.data.categoryname!=null){
+    function getDetail(){
+      articleDetail(data.articleId).then((res)=>{
+        // console.log(res.data)
+        // console.log(data.articleId)
+        data.articleId=res.data.id
+        data.content=res.data.content;
+        data.title=res.data.title;
+        data.viewcounts=res.data.viewcounts;
+        if(res.data.createtime!=null){
+          data.createtime=res.data.createtime;
+        }
+        if(res.data.categoryname!=null){
             data.categoryName=res.data.categoryname;
-          }
-        })
-      }
+        }
+      })
+    }
 
     onMounted(()=>{
       getDetail();
+      updateViewCounts(data.articleId);
     })
+
+
 
 
     return{...toRefs(data)}

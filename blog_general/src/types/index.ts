@@ -4,9 +4,10 @@ export  interface LoginData{
 }
 export interface RegisterData{
     username:string,
+    nickname:string
     password:string,
     e_mail:string,
-    nickname:string
+
 }
 export  interface ArticleListData{
     pageNum:number,

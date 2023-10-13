@@ -23,7 +23,8 @@ export function register(data:RegisterData){
         data
     })
 }
-//todo
+
+
 export function logout(){
     return service({
         url:"/logout",
