@@ -20,7 +20,7 @@ export function hotArticleList(){
         },
     })
 }
-//todo
+
 export function articleDetail(articleId:number){
     return service({
         url:"/article/"+articleId,
@@ -30,11 +30,11 @@ export function articleDetail(articleId:number){
         },
     })
 }
-//todo
+
 export function updateViewCounts(articleId:number){
     return service({
         url:"/article/updateViewCount/"+articleId,
-        method:"get",
+        method:"put",
         headers:{
             isToken:false
         },

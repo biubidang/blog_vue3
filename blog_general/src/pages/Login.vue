@@ -22,10 +22,11 @@
 
     <el-form-item>
       <el-button type="primary" @click="submitForm(ruleFormRef)"
-      >Submit</el-button
-      >
+      >Submit</el-button>
       <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+      <router-link to="/register"> 注册 </router-link>
     </el-form-item>
+
   </el-form>
   </div>
 </template>
@@ -70,6 +71,7 @@ export default defineComponent({
             login(data.ruleForm).then((res)=>{
               console.log(res);
             localStorage.setItem("token",res.data.token);
+            localStorage.setItem("userInfo",JSON.stringify(res.data.userInfo))
             router.push('/');
             })
           } else {
