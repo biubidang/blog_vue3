@@ -24,7 +24,6 @@ export function register(data:RegisterData){
     })
 }
 
-
 export function logout(){
     return service({
         url:"/logout",

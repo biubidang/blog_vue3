@@ -41,12 +41,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../pages/FriendsLink.vue')
   },
   {
-    path: '/userInfo',
-    name: 'userInfo',
+    path: '/articles',
+    name: 'Articles',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../pages/UserInfo.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../pages/Articles.vue')
   },
   {
     path: '/articleList/:id',
@@ -63,6 +63,14 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../pages/DetailArticle.vue')
+  },
+  {
+    path: '/userInfo',
+    name: 'UserInfo',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../pages/UserInfo.vue')
   },
   {
     path: '/test',
