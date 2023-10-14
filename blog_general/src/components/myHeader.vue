@@ -20,23 +20,30 @@
 <!--            <el-menu-item index="2-4-3">item three</el-menu-item>-->
 <!--          </el-sub-menu>-->
         </el-sub-menu>
-        <el-menu-item index="3"><router-link to="/friendsLink">归 档</router-link></el-menu-item>
+        <el-menu-item index="3"><router-link to="/articles">归 档</router-link></el-menu-item>
         <el-menu-item index="4"><router-link to="/friendsLink">友 链</router-link></el-menu-item>
         <el-menu-item index="5"><router-link to="/friendsLink">关 于</router-link></el-menu-item>
         <div class="userInfo">
           <div v-show="!haslogin" class="nologin">
-            <a href="javascript:void(0);" @click="loginFun(0)">登录&nbsp;</a>|<a href="javascript:void(0);" @click="loginFun(1)">&nbsp;注册</a>
+            <a href="javascript:void(0);" @click="loginFun(0)">登录&nbsp;</a> | <a href="javascript:void(0);" @click="loginFun(1)">&nbsp;注册</a>
           </div>
           <div v-show="haslogin" class="haslogin">
-            <i class="fa fa-fw fa-user-circle userImg"></i>
+            <el-row>
+            <i class="fa fa-fw fa-user-circle userImg">
+              <div class="block">
+                <el-avatar :size="45" :src="circleUrl" />&#12288;&#12288;
+              </div>
+            </i>
+
             <ul class="haslogin-info">
               <li>
-                <a href="/UserInfo">个人中心</a>
+                <a href="/userInfo">个人中心</a>
               </li>
               <li>
                 <a href="javascript:void(0);" @click="userlogout">退出登录</a>
               </li>
             </ul>
+            </el-row>
           </div>
         </div>
       </el-menu>

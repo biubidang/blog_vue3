@@ -1,5 +1,11 @@
 <template>
-<Header></Header>
+  <div>
+    <Header></Header>
+  </div>
+  <div class="UserInfo">
+
+  </div>
+
 </template>
 
 <script>
