@@ -15,4 +15,10 @@ export  interface ArticleListData{
     categoryId:number,
 
 }
+export  interface UserInfoData{
+    id:number,
+    nickName:string,
+    e_mail:string,
+    avatar:string,
+}
 

@@ -1,5 +1,5 @@
 import service from "../utils/request"
-import {LoginData, RegisterData} from "@/types";
+import {LoginData, RegisterData, UserInfoData} from "@/types";
 
 
 export  function  login(data:LoginData){
@@ -31,10 +31,14 @@ export function logout(){
     })
 }
 //todo
-export function uploadimg(){
+export function uploadimg(data:FormData) {
     return service({
-        url:"upload",
-        method:"post",
+        url: "/upload",
+        method: "post",
+        headers: {"content-type": false,
+        },
+
+        data,
     })
 }
 //todo
@@ -44,11 +48,11 @@ export function getUserInfo(){
         method:"get",
     })
 }
-//todo
-export function updateUserInfo(){
+export function updateUserInfo(data:UserInfoData){
     return service({
         url:"/user/userinfo",
         method:"put",
+        data
     })
 }
 
