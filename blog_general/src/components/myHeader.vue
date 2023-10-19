@@ -34,7 +34,6 @@
                 <el-avatar :size="45" :src="circleUrl" />&#12288;&#12288;
               </div>
             </i>
-
             <ul class="haslogin-info">
               <li>
                 <a href="/userInfo">个人中心</a>
@@ -47,7 +46,6 @@
           </div>
         </div>
       </el-menu>
-
     </el-col>
     <el-col :span="4"></el-col>
   </el-row>
@@ -146,14 +144,14 @@ return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout};
     .userInfo{
       color:black;
       .nologin {
-        margin-left: 500px;
+        margin-left: 400px;
         margin-top: 25px;
         position: relative;
         min-width: 80px;
         color: #000000;
       }
       .haslogin {
-        margin-left: 500px;
+        margin-left: 400px;
         margin-top: 25px;
         position: relative;
         min-width: 80px;
