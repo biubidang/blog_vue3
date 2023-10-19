@@ -2,6 +2,7 @@
 // @ts-ignore
 
 import axios from "axios";
+import {ElMessage} from "element-plus";
 
 
 const service = axios.create({
@@ -28,11 +29,14 @@ service.interceptors.request.use((config)=>{
 service.interceptors.response.use((res)=> {
     const code: number = res.data.code
     if (code != 200) {
+        ElMessage.error("操作失败")
         return Promise.reject(res.data)
+
     }
     return res.data
 }, (err) =>{
         console.log(err);
 })
 export default service;
+
 
