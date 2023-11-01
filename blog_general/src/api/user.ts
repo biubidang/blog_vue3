@@ -12,7 +12,6 @@ export  function  login(data:LoginData){
         data
     })
 }
-//todo
 export function register(data:RegisterData){
     return service({
         url:"user/register",
@@ -30,7 +29,6 @@ export function logout(){
         method:"post",
     })
 }
-//todo
 export function uploadimg(data:FormData) {
     return service({
         url: "/upload",
@@ -41,7 +39,6 @@ export function uploadimg(data:FormData) {
         data,
     })
 }
-//todo
 export function getUserInfo(){
     return service({
         url:"/user/userinfo",
