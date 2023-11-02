@@ -1,5 +1,5 @@
 <template>
-<div class="header">
+<div class="Nav">
   <el-row :gutter="20">
     <el-col :span="4"><img src="../assets/logo.png" class="logo"/></el-col>
     <el-col :span="16">
@@ -7,9 +7,9 @@
           class="blog-menu"
           mode="horizontal"
       >
-        <el-menu-item index="1"><router-link to="/">首 页</router-link></el-menu-item>
-        <el-sub-menu index="2">
-          <template #title>分 类</template>
+        <el-menu-item index="1" class="toHome"><router-link to="/">首 页</router-link></el-menu-item>
+        <el-sub-menu index="2" >
+          <template #title ><div class="toCategory">分 类</div></template>
           <el-menu-item index="2-1" v-for="category in categories" @click="getCategoryArticles(category.id)">{{category.name}}</el-menu-item>
 <!--          <el-menu-item index="2-2">item two</el-menu-item>-->
 <!--          <el-menu-item index="2-3">item three</el-menu-item>-->
@@ -20,12 +20,12 @@
 <!--            <el-menu-item index="2-4-3">item three</el-menu-item>-->
 <!--          </el-sub-menu>-->
         </el-sub-menu>
-        <el-menu-item index="3"><router-link to="/articles">归 档</router-link></el-menu-item>
-        <el-menu-item index="4"><router-link to="/friendsLink">友 链</router-link></el-menu-item>
-        <el-menu-item index="5"><router-link to="/friendsLink">关 于</router-link></el-menu-item>
+        <el-menu-item index="3" class="toArchive"><router-link to="/articles">归 档</router-link></el-menu-item>
+        <el-menu-item index="4" class="toFriends"><router-link to="/friendsLink">友 链</router-link></el-menu-item>
+        <el-menu-item index="5" class="toAbout"><router-link to="/friendsLink">关 于</router-link></el-menu-item>
         <div class="userInfo">
           <div v-show="!haslogin" class="nologin">
-            <a href="javascript:void(0);" @click="loginFun(0)">登录&nbsp;</a> | <a href="javascript:void(0);" @click="loginFun(1)">&nbsp;注册</a>
+            <a href="javascript:void(0);" class="toLogin" @click="loginFun(0)">登录&nbsp;</a> | <a href="javascript:void(0);" class="toRegister" @click="loginFun(1)">&nbsp;注册</a>
           </div>
           <div v-show="haslogin" class="haslogin">
             <el-row>
@@ -36,10 +36,10 @@
             </i>
             <ul class="haslogin-info">
               <li>
-                <a href="/userInfo">个人中心</a>
+                <a href="/userInfo" class="userCenter">个人中心</a>
               </li>
               <li>
-                <a href="javascript:void(0);" @click="userlogout">退出登录</a>
+                <a href="javascript:void(0);" class="logout" @click="userlogout">退出登录</a>
               </li>
             </ul>
             </el-row>
@@ -135,21 +135,49 @@ return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout};
 </script>
 
 <style lang="scss" scoped>
-.header{
+::v-deep .blog-menu {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.Nav{
   height: 80px;
+  background: #1f1b1b;
   .logo{
     height: 80px;
   }
   .blog-menu{
-    height: 80px;
+    height: 81px;
+    background: #1f1b1b;
+    .toHome{
+      color: bisque;
+    }
+    .toCategory{
+      color: bisque;
+    }
+    .toFriends{
+      color: bisque;
+    }
+    .toArchive{
+      color: bisque;
+    }
+    .toAbout{
+      color: bisque;
+    }
     .userInfo{
-      color:black;
+      color:#1f1b1b;
       .nologin {
         margin-left: 400px;
         margin-top: 25px;
         position: relative;
         min-width: 80px;
-        color: #000000;
+        color: #1f1b1b;
+        .toLogin{
+          color: bisque;
+        }
+        .toRegister{
+          color: bisque;
+        }
       }
       .haslogin {
         margin-left: 400px;
@@ -158,7 +186,12 @@ return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout};
         min-width: 80px;
         cursor: pointer;
         .haslogin-info{
-
+          .userCenter{
+            color: bisque;
+          }
+          .logout{
+            color: bisque;
+          }
         }
       }
     }
