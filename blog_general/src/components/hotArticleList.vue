@@ -1,8 +1,9 @@
 <template>
-  <el-card class="box-card">
-    <template #header>
-      <div  v-for="item in articles" class="card-header">
-        <span>{{ item.title }}</span>
+  <el-card class="box-card" title="热门文章">
+    <template #header class="card-header">
+      <span><h2>热门文章</h2></span>
+      <div  v-for="item in articles" class="text item">
+        <span @click="getDetail(item.id)">{{ item.title }}</span>
         <div class="viewCounts">有{{ item.viewcounts }}人看过啦</div>
       </div>
     </template>
@@ -12,6 +13,7 @@
 <script lang="ts">
 import { hotArticleList } from "@/api/article";
 import {defineComponent, onMounted, reactive, toRefs} from "vue";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   name: "hotArticleList",
@@ -19,6 +21,10 @@ export default defineComponent({
     const data=reactive({
       articles:[]
     })
+    const router=useRouter();
+    function getDetail(index:number) {
+      router.push("/articleDetail/"+index)
+    }
     onMounted(()=>{
       hotArticleList().then((res)=>{
         // console.log(res.data);
@@ -26,7 +32,7 @@ export default defineComponent({
         //console.log(data.articles)
       })
     })
-    return{...toRefs(data),}
+    return{...toRefs(data),getDetail}
   }
 })
 
@@ -46,10 +52,12 @@ export default defineComponent({
 }
 
 .item {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .box-card {
-  width: 480px;
+  width: 300px;
+  opacity: 0.5;
+  position: absolute;
 }
 </style>
