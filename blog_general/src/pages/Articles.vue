@@ -71,6 +71,7 @@ export default defineComponent({
 .timeLineList{
   width: 40%;
   position: absolute;
+
   left: 30%;
   top: 10%;
   opacity: 0.5;
