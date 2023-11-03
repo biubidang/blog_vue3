@@ -142,7 +142,10 @@ return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout};
 
 .Nav{
   height: 80px;
+  width: 100%;
   background: #1f1b1b;
+  position: fixed;
+  z-index: 5;
   .logo{
     height: 80px;
   }
