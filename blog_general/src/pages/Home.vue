@@ -11,7 +11,7 @@
     <hotArticleList></hotArticleList>
   </div>
   <span class="blogTitle_1"><strong style="font: italic 2em Georgia, serif;">b<br>i<br>u<br>b<br>i<br>d<br>a<br>n<br>g<br>'s</strong></span>
-  <span class="blogTitle_2"><strong style="font: italic 2em Georgia, serif;">b<br>a<br>r</strong></span>
+  <span class="blogTitle_2"><strong style="font: italic 2em Georgia, serif;">b<br>l<br>o<br>g</strong></span>
   <div class="block" m="t-5">
     <span class="tips">&#12288; tips:又卷又卷还卷！滚去看番休息</span>
     <span class="demonstration"></span>
@@ -79,7 +79,7 @@ export default defineComponent({
   height: calc(100vh - 80px);
   background-size:100% 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   //filter: blur(3px);
   top: 80px;
   left: 0;
@@ -105,7 +105,7 @@ export default defineComponent({
 }
 .blogTitle_1{
   position: absolute;
-  left:87%;
+  left:88%;
   top:15%;
   font-size: 22px;
   color: peru;
@@ -113,7 +113,7 @@ export default defineComponent({
 .blogTitle_2{
   position: absolute;
   left: 80%;
-  top:70%;
+  top:60%;
   font-size: 32px;
   color: peru;
 }

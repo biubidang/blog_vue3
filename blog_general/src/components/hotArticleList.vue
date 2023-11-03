@@ -59,5 +59,6 @@ export default defineComponent({
   width: 300px;
   opacity: 0.5;
   position: absolute;
+  top:80px
 }
 </style>
