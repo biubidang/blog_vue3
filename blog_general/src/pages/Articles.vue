@@ -1,15 +1,19 @@
 <template>
-  <div>
+  <div class="Nav">
     <Header></Header>
     </div>
-  <div class="timelinelist">
+  <div class="bg-image">
+    <img src="http://s2kg5xn8e.hn-bkt.clouddn.com/background/background.png" style="width: 100%" alt="图片由于未知原因无法显示！">
+  </div>
+  <div class="timeLineList">
     <el-timeline >
-      <el-timeline-item v-for="article in articles"
+      <el-timeline-item  v-for="article in articles"
                         placement="top"
+                        size="large"
                         :timestamp=article.createtime>
         <el-card>
-          <h4 @click="getDetail(article.id)"> {{article.title}}</h4>
-          <h5><p>{{ article.discription }}</p></h5>
+          <h4 class="articleTitle" style="cursor:pointer;" @click="getDetail(article.id)">{{article.title}}</h4>
+          <h5 class="articleDescription"><p>简介：{{ article.discription }}</p></h5>
         </el-card>
       </el-timeline-item>
 
@@ -32,10 +36,11 @@ export default defineComponent({
       articles:[],
       param:{
         pageNum:1,
-        pageSize:1000,
+        pageSize:500,
         categoryId:0
       } as ArticleListData,
     })
+
     const router=useRouter()
     function getDetail(index:number){
       router.push("/articleDetail/"+index)
@@ -54,6 +59,30 @@ export default defineComponent({
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.bg-image{
+  width:100%;
+  height:100%;  /**宽高100%是为了图片铺满屏幕 */
+  z-index:-1;
+  position: fixed;
+  left: 0;
+  top: 80px;
+}
+.timeLineList{
+  width: 40%;
+  position: absolute;
+  left: 30%;
+  top: 10%;
+  opacity: 0.5;
+  .articleTitle{
+    font-size: 18px;
+    color: dodgerblue;
+    margin-bottom: 16px;
+  }
+  .articleDescription{
+    font-size: 12px;
+    color: dodgerblue;
+  }
+}
 
 </style>
