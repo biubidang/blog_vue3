@@ -103,6 +103,7 @@ export default defineComponent({
           });
         }
       }).catch(() => {
+
          router.push('/login')
     });
     }

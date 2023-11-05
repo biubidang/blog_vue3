@@ -207,8 +207,8 @@ export default defineComponent({
         })
       }else{
         // that.haslogin = false;
+        ElMessage.warning("登录已失效！")
         router.push('/login')
-
       }
     })
 
