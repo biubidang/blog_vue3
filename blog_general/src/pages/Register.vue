@@ -1,5 +1,8 @@
 <template>
   <div>登录页面</div>
+  <div class="loginImage">
+    <img src="http://s2kg5xn8e.hn-bkt.clouddn.com/background/background_1.png" style="width: 100%" alt="背景图片显示错误">
+  </div>
   <div class="login-box">
     <el-form
         ref="ruleFormRef"
@@ -10,13 +13,14 @@
         class="demo-ruleForm"
     >
       <el-form-item label="username" prop="username">
-        <el-input v-model="ruleForm.username" type="username" autocomplete="off" />
+        <el-input v-model="ruleForm.username" type="username" autocomplete="off" class="transparent-input"/>
       </el-form-item>
       <el-form-item label="nickname" prop="nickname">
         <el-input
             v-model="ruleForm.nickname"
             type="nickname"
             autocomplete="off"
+            class="transparent-input"
         />
       </el-form-item>
         <el-form-item label="password" prop="password">
@@ -24,6 +28,7 @@
               v-model="ruleForm.password"
               type="password"
               autocomplete="off"
+              class="transparent-input"
           />
         </el-form-item>
       <el-form-item label="e_mail" prop="e_mail">
@@ -31,6 +36,7 @@
             v-model="ruleForm.e_mail"
             type="e_mail"
             autocomplete="off"
+            class="transparent-input"
         />
       </el-form-item>
       <el-form-item>
@@ -38,7 +44,7 @@
         >注册</el-button
         >
         <el-button @click="resetForm(ruleFormRef)">重置</el-button>
-        <router-link to="/login"> 登录 </router-link>
+        <router-link to="/login" class="toLoginButton"> 登录 </router-link>
       </el-form-item>
     </el-form>
   </div>
@@ -115,5 +121,33 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 
-
+.login-box{
+  height: 300px;
+  width: 400px;
+  position: absolute;
+  left: 35%;
+  top:40%;
+  ::v-deep .transparent-input .el-input__wrapper{
+    background-color: transparent !important;
+    .el-input__inner{
+      background-color: transparent;
+      color: snow;
+    }
+  }
+  ::v-deep .loginLabel{
+    color: snow;
+  }
+  .toLoginButton{
+    position: relative;
+    left: 20px;
+  }
+}
+.loginImage{
+  width:100%;
+  height:100%;
+  z-index:-1;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
 </style>
