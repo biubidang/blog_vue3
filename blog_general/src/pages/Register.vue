@@ -84,7 +84,7 @@ export default defineComponent({
         { min: 1, max: 20, message: 'Length should be 1 to 20', trigger: 'blur' },
       ],
       e_mail: [
-        { required: false, message: '', trigger: 'blur' },
+        { required: true, message: '', trigger: 'blur' },
         {},
       ],
     };

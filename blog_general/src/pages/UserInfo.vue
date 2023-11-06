@@ -204,7 +204,10 @@ export default defineComponent({
           data.userInfoObj.avatar = res.data.avatar;
           // data.userInfoObj.head_start = 0;
           data.imageUrl='http://'+data.userInfoObj.avatar
+        }).catch(()=>{
+          router.push('/login')
         })
+
       }else{
         // that.haslogin = false;
         ElMessage.warning("登录已失效！")
