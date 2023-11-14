@@ -52,7 +52,7 @@ service.interceptors.response.use((res)=> {
             ElMessage.warning("没有权限操作哦")
         }
         else if(code==500){
-            ElMessage.error("出错啦┭┮﹏┭┮")
+            ElMessage.error("密码或用户名出错啦┭┮﹏┭┮")
         }
         else if(code==501){
             ElMessage.warning("有这个用户名了")
