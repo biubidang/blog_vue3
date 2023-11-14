@@ -100,6 +100,8 @@ export default defineComponent({
           register(data.ruleForm).then((res)=>{
             console.log(res);
             router.push('/login');
+          }).catch(()=>{
+
           })
         } else {
           console.log('error submit!', fields)

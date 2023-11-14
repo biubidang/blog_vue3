@@ -43,6 +43,7 @@ import {defineComponent, onBeforeMount, onMounted, onUnmounted, reactive, toRefs
 import {articleDetail, updateViewCounts} from "@/api/article";
 import $bus from "@/utils/mitt";
 import router from "@/router";
+import {ElMessage} from "element-plus";
 
 export default defineComponent({
   name: "articleDetail",
@@ -72,6 +73,8 @@ export default defineComponent({
         if(res.data.categoryname!=null){
             data.categoryName=res.data.categoryname;
         }
+      }).catch(()=>{
+        ElMessage.warning("文章不存在！")
       })
     }
 

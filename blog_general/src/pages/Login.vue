@@ -76,6 +76,8 @@ export default defineComponent({
             localStorage.setItem("token",res.data.token);
             localStorage.setItem("userInfo",JSON.stringify(res.data.userInfo))
             router.push('/');
+            }).catch(()=>{
+
             })
           } else {
             console.log('error submit!', fields)

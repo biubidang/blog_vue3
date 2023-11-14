@@ -186,6 +186,8 @@ export default defineComponent({
       updateUserInfo(data.userInfoObj).then((response) => {//保存信息接口，返回展示页
         ElMessage.success( '保存成功！');
         data.isEdit = false;
+      }).catch(()=>{
+
       })
     }
     onUpdated(()=>{

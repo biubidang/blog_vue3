@@ -3,7 +3,7 @@
     <template #header class="card-header">
       <span><h2>热门文章</h2></span>
       <div  v-for="item in articles" class="text item">
-        <span @click="getDetail(item.id)">{{ item.title }}</span>
+        <span @click="getDetail(item.id)" style="cursor:pointer;">{{ item.title }}</span>
         <div class="viewCounts">有{{ item.viewcounts }}人看过啦</div>
       </div>
     </template>
