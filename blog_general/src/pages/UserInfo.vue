@@ -2,6 +2,9 @@
   <div>
     <Header></Header>
   </div>
+  <div class="userInfoImage">
+    <img src="http://qny.uioku.top/background/background_1.png" style="width: 100%" alt="背景图片显示错误">
+  </div>
   <div class="UserInfo">
     <!-- 用户中心 -->
         <div class="container">
@@ -183,6 +186,10 @@ export default defineComponent({
          ElMessage.warning('昵称为必填项，请填写昵称');
         return;
       }
+      else if(data.userInfoObj.nickName.length>15){
+        ElMessage.warning('昵称长度不合规，请重新修改');
+        return;
+      }
       updateUserInfo(data.userInfoObj).then((response) => {//保存信息接口，返回展示页
         ElMessage.success( '保存成功！');
         data.isEdit = false;
@@ -222,7 +229,20 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
+.container{
+  position: absolute;
+  top:30%;
+  left: 40%;
+}
+.userInfoImage{
+  width:100%;
+  height:100%;
+  z-index:-1;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
 .userInfoBox .avatarlist{
   position: relative;
 }
