@@ -59,7 +59,7 @@ export default defineComponent({
           ],
           password: [
             { required: true, message: '', trigger: 'blur' },
-            { min: 3, max: 10, message: 'Length should be 3 to 10', trigger: 'blur' },
+            { min: 3, max: 12, message: 'Length should be 3 to 10', trigger: 'blur' },
           ],
         };
 

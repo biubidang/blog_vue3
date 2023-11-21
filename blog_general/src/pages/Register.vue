@@ -77,11 +77,11 @@ export default defineComponent({
       ],
       password: [
         { required: true, message: '', trigger: 'blur' },
-        { min: 3, max: 10, message: 'Length should be 3 to 10', trigger: 'blur' },
+        { min: 3, max: 12, message: 'Length should be 3 to 12', trigger: 'blur' },
       ],
       nickname: [
         { required: true, message: '', trigger: 'blur' },
-        { min: 1, max: 20, message: 'Length should be 1 to 20', trigger: 'blur' },
+        { min: 1, max: 15, message: 'Length should be 1 to 15', trigger: 'blur' },
       ],
       e_mail: [
         { required: true, message: '', trigger: 'blur' },
