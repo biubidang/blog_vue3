@@ -1,7 +1,7 @@
 <template>
   <div>登录页面</div>
   <div class="loginImage">
-    <img src="http://s2kg5xn8e.hn-bkt.clouddn.com/background/background_1.png" style="width: 100%" alt="背景图片显示错误">
+    <img src="http://qny.uioku.top/background/background_1.png" style="width: 100%" alt="背景图片显示错误">
   </div>
   <div class="login-box">
     <el-form

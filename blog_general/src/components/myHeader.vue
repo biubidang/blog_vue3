@@ -1,7 +1,7 @@
 <template>
 <div class="Nav">
   <el-row :gutter="20">
-    <el-col :span="4"><img src="../assets/logo.png" class="logo"/></el-col>
+    <el-col :span="4"><img src="../assets/logo.png" class="logo" alt="无"/></el-col>
     <el-col :span="16">
       <el-menu
           class="blog-menu"
@@ -22,7 +22,7 @@
         </el-sub-menu>
         <el-menu-item index="3" class="toArchive"><router-link to="/articles">归 档</router-link></el-menu-item>
         <el-menu-item index="4" class="toFriends"><router-link to="/friendsLink">友 链</router-link></el-menu-item>
-        <el-menu-item index="5" class="toAbout"><router-link to="/friendsLink">关 于</router-link></el-menu-item>
+        <el-menu-item index="5" class="toAbout" @click="goPage('https://github.com/biubidang/biubidang_blog')">关 于</el-menu-item>
         <div class="userInfo">
           <div v-show="!haslogin" class="nologin">
             <a href="javascript:void(0);" class="toLogin" @click="loginFun(0)">登录&nbsp;</a> | <a href="javascript:void(0);" class="toRegister" @click="loginFun(1)">&nbsp;注册</a>
@@ -77,6 +77,9 @@ export default defineComponent({
     // const handleSelect = (key: string, keyPath: string[]) => {
     //   console.log(key, keyPath)
     // }
+    function goPage(url:string){
+      window.open(url,'_blank')
+    }
 
     function getCategoryArticles(index:number){
       router.push('/articleList/'+index);
@@ -128,7 +131,7 @@ export default defineComponent({
 
     })
 
-return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout};
+return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout,goPage};
   },
 
 
