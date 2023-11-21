@@ -4,7 +4,7 @@
   </div>
   <div class="VideoPlay">
     <video class="videoStyle" id="video" playsinline="false" autoplay="true" muted="true" loop="true">
-      <source src="http://s2kg5xn8e.hn-bkt.clouddn.com/2023/11/1/rainingday.mp4" type="video/mp4" >
+      <source src="http://qny.uioku.top/2023/11/1/rainingday.mp4" type="video/mp4" >
     </video>
   </div>
   <div class="hotList">
@@ -17,7 +17,7 @@
     <span class="demonstration"></span>
     <el-carousel trigger="click" height="450px" >
       <el-carousel-item class="imgInDisplay" v-for="item in imgData" :key="item">
-        <img :src="item.url" alt="no image" class="rightulliimg"/>
+        <img :src="item.url" alt="no image" class="rightulliimg" style="cursor: pointer" @click="goPage('http://www.zzzfun.one/')"/>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -33,16 +33,19 @@ export default defineComponent({
   components: {HotArticleList, Header},
   setup() {
     const imgData = [
-      {url: "http://s2kg5xn8e.hn-bkt.clouddn.com/animationRecommend/001.png"},
-      {url: "http://s2kg5xn8e.hn-bkt.clouddn.com/animationRecommend/002.png"},
-      {url: "http://s2kg5xn8e.hn-bkt.clouddn.com/animationRecommend/003.png"},
-      {url: "http://s2kg5xn8e.hn-bkt.clouddn.com/animationRecommend/004.png"},
-      {url: "http://s2kg5xn8e.hn-bkt.clouddn.com/animationRecommend/005.png"},
+      {url: "http://qny.uioku.top/animationRecommend/001.png"},
+      {url: "http://qny.uioku.top/animationRecommend/002.png"},
+      {url: "http://qny.uioku.top/animationRecommend/003.png"},
+      {url: "http://qny.uioku.top/animationRecommend/004.png"},
+      {url: "http://qny.uioku.top/animationRecommend/005.png"},
     ]
 
+    function goPage(url:string){
+        window.open(url,'_blank')
+    }
     onMounted(() => {
     })
-    return{imgData}
+    return{imgData,goPage}
   }
 
 })

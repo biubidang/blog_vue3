@@ -3,7 +3,7 @@
     <Header></Header>
     </div>
   <div class="bg-image">
-    <img src="http://s2kg5xn8e.hn-bkt.clouddn.com/background/background.png" style="width: 100%" alt="图片由于未知原因无法显示！">
+    <img src="http://qny.uioku.top/background/background.png" style="width: 100%" alt="图片由于未知原因无法显示！">
   </div>
   <div class="timeLineList">
     <el-timeline >
