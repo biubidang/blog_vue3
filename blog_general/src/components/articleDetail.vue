@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%">
     <div class="article clearfix">
-        <div>
+        <div class="article-detail">
           <h1 class="title">{{ title }}</h1>
           <div class="author">
             <div class="avatar">
@@ -121,12 +121,16 @@ export default defineComponent({
 
 .article {
   width: 100%;
+  position: absolute;
+  top:80px !important;
+  background-color: #1f1b1b;
 
   .title {
       margin: 0;
       text-align: center;
       font-size: 34px;
       font-weight: bold;
+    color: snow;
     }
 
   .author {
@@ -210,6 +214,10 @@ export default defineComponent({
   height: 60px; /*same height as header*/
   margin-top: -60px; /*same height as header*/
   visibility: hidden;
+}
+::v-deep .article-detail .v-md-editor-preview .vuepress-markdown-body{
+  background-color: #1f1b1b;
+  color: snow;
 }
 
 </style>
