@@ -2,13 +2,14 @@
 
   <div class="article-collapse">
     <el-collapse accordion>
-        <el-collapse-item v-for="item in articles">
+        <el-collapse-item v-for="item in articles" class="collapse-box">
         <template #title >
-          {{item.title}}<el-icon class="header-icon">
+          <div class="title">{{item.title}}</div>
+          <el-icon class="header-icon">
           <info-filled />
         </el-icon>
           <div class="time">
-            创建时间:&#12288;{{item.createtime}}&#12288;&#12288;
+            &#12288;{{item.createtime}}&#12288;&#12288;
           </div>
           <div class="viewcount">
             &#12288;有{{item.viewcounts}}人看过啦
@@ -17,13 +18,12 @@
             &#12288;{{item.category}}
           </div>
         </template>
-        <div class="description" @click="getDetailfromCategory(item.id)">
+        <div class="description" @click="getDetailfromCategory(item.id)" style="cursor: pointer">
           {{item.discription}}
         </div>
       </el-collapse-item>
     </el-collapse>
     <div class="example-pagination-block">
-      <div class="example-demonstration">When you have few pages</div>
       <el-pagination v-model:current-page="param.pageNum"
                      :page-size="param.pageSize"
           layout="prev, pager, next, jumper" :total="total" @current-change="handleCurrentChange"/>
@@ -97,8 +97,52 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.example-pagination-block + .example-pagination-block {
-  margin-top: 10px;
+<style lang="scss" scoped>
+::v-deep .el-pagination{
+  --el-pagination-bg-color: rgba(255,255,255,0.1);
+  --el-pagination-button-color: rgba(255,255,255,0.1);
+  --el-pagination-button-disabled-bg-color: rgba(255,255,255,0.1);
+}
+::v-deep .el-input__wrapper{
+  background-color:rgba(255,255,255,0.1) ;
+  box-shadow: none;
+}
+.example-pagination-block{
+  position: relative;
+  top:10px;
+  left: 100px;
+}
+.collapse-box {
+
+  border-radius: 15px;
+  border-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.1);
+  box-shadow: 5px 5px 0 0 rgba(0,0,0,0.2);
+}
+::v-deep.el-collapse{
+  border-top:none;
+  border-bottom: none;
+}
+::v-deep.el-collapse-item .el-collapse-item__header {
+  background-color: rgba(255,255,255,0.1);
+  border-bottom: none;
+}
+::v-deep.el-collapse-item .el-collapse-item__wrap{
+  background-color: rgba(255,255,255,0.1);
+  border-bottom: none;
+}
+.article-collapse{
+  .time{
+    color: chocolate;
+  }
+  .viewcount{
+    color: chocolate;
+  }
+  .title{
+    color: chocolate;
+  }
+  .description{
+    color: chocolate;
+  }
 }
 </style>

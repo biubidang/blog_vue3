@@ -14,6 +14,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.article-detail{
+  position: absolute;
+  top:80px;
+}
 </style>
