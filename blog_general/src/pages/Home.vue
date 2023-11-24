@@ -2,11 +2,9 @@
   <div class="HeaderStyle">
 <Header></Header>
   </div>
-  <div class="VideoPlay">
     <video class="videoStyle" id="video" playsinline="true" autoplay="true" muted="true" loop="true">
       <source src="http://qny.uioku.top/2023/11/1/rainingday.mp4" type="video/mp4" >
     </video>
-  </div>
   <div class="hotList">
     <hotArticleList></hotArticleList>
   </div>

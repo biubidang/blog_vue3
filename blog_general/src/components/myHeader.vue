@@ -152,10 +152,14 @@ return {categories,getCategoryArticles,...toRefs(data),loginFun, userlogout,goPa
   z-index: 5;
   .logo{
     height: 80px;
+    position: relative;
+    left:40%;
   }
   .blog-menu{
     height: 81px;
     background: #1f1b1b;
+    position: relative;
+    left:20%;
     .toHome{
       color: bisque;
     }
