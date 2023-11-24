@@ -108,7 +108,6 @@ export default defineComponent({
         avatar:"",
       }as UserInfoData,//用户的信息
     })
-    data.uploadURL="http://localhost:8088/"+'upload'
     console.log(data.uploadURL)
     const router=useRouter();
     let result={}
@@ -169,13 +168,13 @@ export default defineComponent({
 
     const beforeAvatarUpload: UploadProps['beforeUpload'] = (file) => {//判断头像大小
       const isJPG = file.type === 'image/png'
-      const isLt3M = file.size / 1024 / 1024 < 3;
+      const isLt3M = file.size / 1024 / 1024 < 2;
       // console.log(file);
       if (!isJPG) {
         ElMessage.warning('上传头像图片只能是 PNG 格式!');
       }
       if (!isLt3M) {
-        ElMessage.warning('上传头像图片大小不能超过 3MB!');
+        ElMessage.warning('上传头像图片大小不能超过 2MB!');
       }
       return isJPG && isLt3M;
     }

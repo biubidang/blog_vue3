@@ -3,7 +3,7 @@
 <Header></Header>
   </div>
   <div class="VideoPlay">
-    <video class="videoStyle" id="video" playsinline="false" autoplay="true" muted="true" loop="true">
+    <video class="videoStyle" id="video" playsinline="true" autoplay="true" muted="true" loop="true">
       <source src="http://qny.uioku.top/2023/11/1/rainingday.mp4" type="video/mp4" >
     </video>
   </div>
@@ -20,6 +20,10 @@
         <img :src="item.url" alt="no image" class="rightulliimg" style="cursor: pointer" @click="goPage('http://www.zzzfun.one/')"/>
       </el-carousel-item>
     </el-carousel>
+  </div>
+  <div class="hangingInfo">
+  <span><a class="hangingInfoFont" href="https://beian.miit.gov.cn/" target="_blank">备案号：</a></span>
+  <span><a class="hangingInfoFont" href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2023024490号-1</a></span>
   </div>
 </template>
 
@@ -119,6 +123,16 @@ export default defineComponent({
   top:60%;
   font-size: 32px;
   color: peru;
+}
+.hangingInfo{
+  position: absolute;
+  top:100%;
+  left: 45%;
+  .hangingInfoFont{
+    color: #8c939d;
+    font-size: 10px;
+
+  }
 }
 
 </style>
